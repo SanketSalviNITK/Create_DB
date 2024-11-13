@@ -11,10 +11,10 @@ def insert_random_data(table_name, thickness_column_suffix):
 
     # Generate random values for other fields
     random_channel_id = "A08"
-    random_property_name = "Example Property"
-    random_database_type = "Type1"
-    random_reactor_type = "Reactor1"
-    random_reactor_name = "ReactorName"
+    random_property_name = "Tube Dimensions"
+    random_database_type = "Mechanical"
+    random_reactor_type = "220_IPHWR"
+    random_reactor_name = "RAPS"
     random_year = "2024"
     random_hoy = "HOY Value"
     random_length = "100m"
