@@ -258,8 +258,174 @@ def create_installation_table():
 # Create the Tube_Installation table
 create_installation_table()
 
-# Commit the transaction and close the connection
+# Start of the SQL command to create the table
+create_table_sql = """
+CREATE TABLE IF NOT EXISTS ISI_PSI_Avg_Diameter (
+    channel_id TEXT,
+    property_name TEXT,
+    database_type TEXT,
+    reactor_type TEXT,
+    reactor_name TEXT,
+    HOY INTEGER,
+    FPY INTEGER,
+    Entered_By TEXT,
+    Year INTEGER,
+    Remark TEXT,
+"""
+
+# Add cell columns (Position and Diameter for each cell)
+for i in range(1, 101):
+    create_table_sql += f"    Cell{i}_Position_mm REAL,\n"
+    create_table_sql += f"    Cell{i}_Diameter_mm REAL,\n"
+
+# Remove the last comma and newline, then close the SQL command
+create_table_sql = create_table_sql.rstrip(",\n") + "\n);"
+
+# Execute the SQL command to create the table
+cursor.execute(create_table_sql)
+
+print("ISI_PSI_Avg_Diameter table created successfully.")
+
+# Start of the SQL command to create the table
+create_table_sql = """
+CREATE TABLE IF NOT EXISTS ISI_PT_Centerline_SAG (
+    channel_id TEXT,
+    property_name TEXT,
+    database_type TEXT,
+    reactor_type TEXT,
+    reactor_name TEXT,
+    HOY INTEGER,
+    FPY INTEGER,
+    Entered_By TEXT,
+    Year INTEGER,
+    Remark TEXT,
+"""
+
+# Add cell columns (Position and Sag for each cell)
+for i in range(1, 101):
+    create_table_sql += f"    Cell{i}_Position_mm REAL,\n"
+    create_table_sql += f"    Cell{i}_Sag_mm REAL,\n"
+
+# Remove the last comma and newline, then close the SQL command
+create_table_sql = create_table_sql.rstrip(",\n") + "\n);"
+
+# Execute the SQL command to create the table
+cursor.execute(create_table_sql)
+print("ISI_PT_Centerline_SAG table created successfully.")
+
+
+create_table_sql = """
+CREATE TABLE IF NOT EXISTS ISI_Thickness (
+    channel_id TEXT,
+    property_name TEXT,
+    database_type TEXT,
+    reactor_type TEXT,
+    reactor_name TEXT,
+    HOY INTEGER,
+    FPY INTEGER,
+    Entered_By TEXT,
+    Year INTEGER,
+    Remark TEXT,
+"""
+
+# Add cell columns (Position and Sag for each cell)
+for i in range(1, 101):
+    create_table_sql += f"    Cell{i}_Position_mm REAL,\n"
+    create_table_sql += f"    Cell{i}_Thickness_mm REAL,\n"
+
+# Remove the last comma and newline, then close the SQL command
+create_table_sql = create_table_sql.rstrip(",\n") + "\n);"
+
+# Execute the SQL command to create the table
+cursor.execute(create_table_sql)
+
+print("ISI_Thickness table created successfully.")
+
+create_table_sql = """
+CREATE TABLE IF NOT EXISTS ISI_Channel_Length (
+    channel_id TEXT,
+    property_name TEXT,
+    database_type TEXT,
+    reactor_type TEXT,
+    reactor_name TEXT,
+    HOY INTEGER,
+    FPY INTEGER,
+    Entered_By TEXT,
+    Year INTEGER,
+    Remark TEXT,
+"""
+
+# Add cell columns (Position and Sag for each cell)
+for i in range(1, 101):
+    create_table_sql += f"    Cell{i}_Length_mm REAL,\n"
+
+# Remove the last comma and newline, then close the SQL command
+create_table_sql = create_table_sql.rstrip(",\n") + "\n);"
+
+# Execute the SQL command to create the table
+cursor.execute(create_table_sql)
+
+print("ISI_Channel_Length table created successfully.")
+
+
+create_table_sql = """
+CREATE TABLE IF NOT EXISTS ISI_Inspection_Log (
+    channel_id TEXT,
+    property_name TEXT,
+    database_type TEXT,
+    reactor_type TEXT,
+    reactor_name TEXT,
+    HOY INTEGER,
+    FPY INTEGER,
+    Entered_By TEXT,
+    Year INTEGER,
+    Remark TEXT,
+    UT_inspection_report BLOB,
+    Sliver_status TEXT,
+    Sliver_location TEXT,
+    
+
+"""
+
+for i in range(1, 101):
+    create_table_sql += f"    Cell{i} REAL,\n"
+
+# Remove the last comma and newline, then close the SQL command
+create_table_sql = create_table_sql.rstrip(",\n") + "\n);"
+
+# Execute the SQL command to create the table
+cursor.execute(create_table_sql)
+
+print("ISI_Inspection_Log table created successfully.")
+
+
+
+
+create_table_sql = """
+CREATE TABLE IF NOT EXISTS ISI_GS_Position (
+    channel_id TEXT,
+    property_name TEXT,
+    database_type TEXT,
+    reactor_type TEXT,
+    reactor_name TEXT,
+    HOY INTEGER,
+    FPY INTEGER,
+    Entered_By TEXT,
+    Year INTEGER,
+    Remark TEXT,
+"""
+
+for i in range(1, 101):
+    create_table_sql += f"    Cell{i} REAL,\n"
+
+# Remove the last comma and newline, then close the SQL command
+create_table_sql = create_table_sql.rstrip(",\n") + "\n);"
+
+# Execute the SQL command to create the table
+cursor.execute(create_table_sql)
+
 conn.commit()
 conn.close()
+print("ISI_GS_Position table created successfully.")
 
 print("All table created successfully in the reactor_data.db database.")
